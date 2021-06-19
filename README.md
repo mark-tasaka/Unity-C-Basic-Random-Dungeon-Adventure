@@ -13,6 +13,12 @@ Billy's McDaniel's course: https://www.udemy.com/course/unity-2d-random-dungeon-
 ----------------------
 
 
+
+Update 1.02: 2021-06-19
+
+Add animation (walking, idle) to the Player class.
+
+
 Update 1.01: 2021-06-15
 
 Completed the course and uploaded the project from this course.  My next updates will expand on the project, by added new features and functionality to the project.
