@@ -4,30 +4,53 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Rigidbody2D theRB;
+    public float moveSpeed;
+
+    public Animator myAnim;
+    /*
     public float speed;
 
     LayerMask obstacleMask;
     Vector2 targetPosition;
+
+    public Animator myAnim;
+
     Transform GFX;
     float flipX;
     //bool false by default
-    bool isMoving;
+    bool isMoving;*/
 
     void Start()
     {
+        /*
         obstacleMask = LayerMask.GetMask("Wall", "Enemy");
         GFX = GetComponentInChildren<SpriteRenderer>().transform;
-        flipX = GFX.localScale.x;
+        flipX = GFX.localScale.x;*/
         
     }
 
     void Update()
     {
-        Move();
- 
+        //theRB.velocity = new Vector2(1f, 1f);
+        theRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * moveSpeed;
+
+        myAnim.SetFloat("moveX", theRB.velocity.x);
+        myAnim.SetFloat("moveY", theRB.velocity.y);
+
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        {
+            myAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
+            myAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
+        }
+
+
+        //Move();
+
 
     }
 
+    /*
     private void Move()
     {
         float horz = System.Math.Sign(Input.GetAxisRaw("Horizontal"));
@@ -86,5 +109,5 @@ public class Player : MonoBehaviour
 
         isMoving = false;
 
-    }
+    }*/
 }
